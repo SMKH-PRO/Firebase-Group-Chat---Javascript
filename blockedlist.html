@@ -1,0 +1,257 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <script> 
+                var userip;
+           
+                var useripstring;
+                var havedata;
+
+var connectedornot;
+                 </script>
+                 
+                 <!--Bootsstrap-->
+                 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+                
+                 
+                 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+                 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+                 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+                <!--Bootstrap ends-->
+        
+                
+                 <!--Page intro for Search Engine and social media-->
+                 
+                 <!--<link rel="icon" type="image/png" href="viewicon.png">
+                 <meta property="og:type" content="website" />
+                <meta property="og:title" content="Block/UnBlock Users With Firebase Database." />
+                <meta property="og:description" content="Block Or Unblock user from your website using firebase.. Realtime blocking pure javascript block by ip address." />
+               <meta property="og:image" content="https://www.mutualfilesharing.com/viewiconfbb7.png" />
+                
+                <meta name="description" content="Block Or Unblock user from your website using firebase.. Realtime blocking pure javascript block by ip address.">
+                -->
+                 
+                    <meta charset="UTF-8">
+                    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+                    <title>Admin Panel | Unblock Users</title>
+                    
+                    
+                    
+                    
+                    
+                    <!--Page intro ends above -->
+                    
+                    
+                    
+                    
+                    
+                
+                <script src="https://www.gstatic.com/firebasejs/4.13.0/firebase.js"></script>
+                <script src="js/firebaseintialize.js"></script>
+                
+                
+                
+                    <script>
+                            function getkey(){
+                
+                                setTimeout(function(){getkey()},1000)
+                        
+                        if(userip === null || userip === undefined ){
+                            console.log("getting key from getkey.js")
+                                
+                    $(document).ready( function() {
+                    $.getJSON("https://freegeoip.net/json/", function(result){
+                        console.log('Country: ' + result.country_name + '\n' + 'Code: ' + result.country_code);
+                        country = result.country_name ;
+                        userip = result.ip;
+                        city = result.city;
+                    });
+                }); 
+                            
+                        }
+                }
+                
+                function gettingkey(){
+                    if(userip === undefined || userip == "undefined"){
+                        
+                        console.log("Re-Executing Script To Get Key.! ")
+                         var head= document.getElementsByTagName('head')[0];
+                      var script= document.createElement('script');
+                      script.src= 'https://l2.io/ip.js?var=userip';
+                      head.appendChild(script);
+                      
+                      
+                    }
+                    else{console.log("gettingkey() skipped getkey() because key wasnt undefined and now showing data from firebase");}
+                }
+                
+                    </script>
+                
+                <style>
+                .name{ text-transform: uppercase; font-weight:800}
+                </style>
+   
+</head>
+<body>
+<center>
+    <h1> LIST OF BLOCKED USERS </h1></center>
+    <div id="userdata" class="container">
+
+       <h2 style="visibility: visible" id="status"> Loading Data...!</h2>
+
+    </div>
+
+
+
+    <script>
+var i = 0;
+    firebase.database().ref('CHATROOM/BLOCKEDIPS/').on('child_added',(childs)=>{
+document.getElementById("status").style="display:none;";
+      i =  i+1;
+        
+havedata = "yes";
+var quotedkey = "'"+childs.key+"'"
+var keys = childs.key;
+
+console.log("Function is Running "+(i)+" Times.")
+//data.forEach(function(childs){
+    console.log(childs.child("Name").val())
+  var  naam = childs.child(`Name`).val();
+   var nick = childs.child(`NickName`).val();
+var email = childs.child('Email').val();
+var Phone = childs.child('Phone').val();
+ var Pic = childs.child('Pic').val();
+var FBLink = childs.child('FBLink').val();
+//~~~~~~~~~~~~~~~~
+var LISP = childs.child('LISP').val();
+var LIP = childs.child('LIP').val();
+var LArea  = childs.child('LArea').val();
+//~~~~~~~~~~~~~~~
+var RArea = childs.child('RArea').val();
+var RIP =childs.child('RIP').val();
+var RISP = childs.child('RISP').val();
+var adminname = childs.child("BlockedByAdmin").val()
+var idoftoggle= childs.key+childs.child("Phone").val().slice(4)
+
+
+var REASON ; 
+
+if( childs.child("Reason").val().length < 20){
+REASON = '<b title="Reason Entered By Admin/Moderator who blocked this user">Reason</b> '+childs.child("Reason").val()+' as'
+}
+else{
+REASON  = '<b title="Reason Entered By Admin/Moderator who blocked this user">Reason</b><a class="btn " data-toggle="collapse" href="#'+idoftoggle+'reason'+'" role="button" aria-expanded="false" aria-controls="'+idoftoggle+'reason'+'"> Read Reason.... </a><div style="position: absolute; background: white; box-shadow: black 0px 0px 10px; padding: 20px;" class="collapse" id="'+idoftoggle+'reason'+'"> '+childs.child("Reason").val()+' </div>';
+
+}
+document.getElementById("userdata").innerHTML += '<div id="'+childs.key+'parentdiv" class="card border-dark mb-3" style="max-width:300px;width:300px; margin:8px; display:inline-block"> <div class="card-header"><center><img style="width:100px; height:100px" src="'+Pic+'"></center></div> <div class="card-body text-dark"> <h5 title="'+nick+'" class="card-title name">'+naam+'</h5> <p class="card-text"><b>Email: </b> '+email+' <br> <b>Phone:</b> '+Phone+' <br><b><i class="fa fa-facebook"></i></b> <a title="link will be opened in new tab." href="'+FBLink+'" target="_blank">View Fb Profile.</a><br><b title="This user has been blocked by admin having this email: '+adminname+'">Admin: </b>'+adminname+'<br> '+REASON+' </p> <a class="btn " data-toggle="collapse" href="#'+idoftoggle+'" role="button" aria-expanded="false" aria-controls="collapseExample"> More Details.... </a> <div style="position: absolute; background: white; box-shadow: black 0px 0px 10px; padding: 20px;" class="collapse" id="'+idoftoggle+'"> <div class=""><hr> <h5>Last Login Details:</h5><p> <b title="Area From Which This User Logged In Last Time.">L Area: </b>'+LArea+'<br><b title="ISP from which user logged in last time" >L ISP: </b> '+LISP+' <br> <b title="IP from which user logged in last time.">L IP:</b> '+LIP+'</p><br> <hr><h5>Registered Details:</h5> <p><b title="Area From Which User Registered">R Area: </b> '+RArea+' <br><b title="ISP FROM WHICH USER REGISTERED ACCOUNT">R ISP:</b> '+RISP+'<br> <b title="IP from which user registered his account.">R IP: </b> '+RIP+' </p> </div> </div></div>  <div class="card-footer bg-transparent border-success"><button id='+quotedkey+' class="btn btn-danger" onclick="unblockuser('+quotedkey+')" >Unblock</button></div></div>';
+
+//});
+
+
+
+
+
+  })
+
+
+
+
+
+
+
+
+function unblockuser(snapkey){
+    firebase.database().ref('CHATROOM/BLOCKEDIPS/').child(snapkey).remove()
+
+    document.getElementById(snapkey).innerHTML = "User Unblocked..!"
+    document.getElementById(snapkey).className="btn btn-success";
+
+    var idofdiv = snapkey+"parentdiv";
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+var connectedRef = firebase.database().ref(".info/connected");
+connectedRef.on("value", function(snap) {
+  if (snap.val() === true) {
+
+
+
+firebase.database().ref('CHATROOM/BLOCKEDIPS/').on('child_removed',(data)=>{
+
+
+   var idofdiv = data.key+"parentdiv";
+
+
+    $("#"+idofdiv).fadeOut(300, function() { $("#"+idofdiv).remove() });
+
+
+
+
+
+
+});
+
+
+
+
+    connectedornot="yes";
+
+
+
+setTimeout(function(){
+
+    
+    if(havedata != "yes"){
+    document.getElementById("status").innerHTML = "<p style='color:red'>No Data Found, None of The User Is Blocked.</p>"}
+},3500)
+
+
+
+
+  } else {
+    connectedornot= "no";
+document.getElementById("status").style="display:block"
+
+   if(havedata != "yes"){
+
+setTimeout(function(){
+
+    if(connectedornot == "no"){
+    document.getElementById("status").innerHTML = "<br><br><p style='color:red'>Couldn't Connect With Server, Maybe Problem with your internet..</p>"}
+},3500)
+}
+   
+  }
+});
+
+    </script>
+</body>
+</html>

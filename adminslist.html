@@ -1,0 +1,424 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+        <script> 
+                var userip;
+           
+                var useripstring;
+                var havedata;
+
+var connectedornot;
+                 </script>
+                 
+                 <!--Bootsstrap-->
+                 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+                
+              
+                 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+                 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+                 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+                 <script src="js/notifications.js"></script>
+        
+                 <script src="js/shownotifications.js"></script>
+                <!--Bootstrap ends-->
+        
+                
+                 <!--Page intro for Search Engine and social media-->
+                 
+                 <!--<link rel="icon" type="image/png" href="viewicon.png">
+                 <meta property="og:type" content="website" />
+                <meta property="og:title" content="Block/UnBlock Users With Firebase Database." />
+                <meta property="og:description" content="Block Or Unblock user from your website using firebase.. Realtime blocking pure javascript block by ip address." />
+               <meta property="og:image" content="https://www.mutualfilesharing.com/viewiconfbb7.png" />
+                
+                <meta name="description" content="Block Or Unblock user from your website using firebase.. Realtime blocking pure javascript block by ip address.">
+                -->
+                 
+                    <meta charset="UTF-8">
+                    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+                    <title>Admin Panel </title>
+                    
+                    
+                    
+                    
+                    
+                    <!--Page intro ends above -->
+                    
+                    
+                    
+                    
+                    
+                
+                <script src="https://www.gstatic.com/firebasejs/4.13.0/firebase.js"></script>
+                <script src="js/firebaseintialize.js"></script>
+                
+                
+                
+                    <script>
+                            function getkey(){
+                
+                                setTimeout(function(){getkey()},1000)
+                        
+                        if(userip === null || userip === undefined ){
+                            console.log("getting key from getkey.js")
+                                
+                    $(document).ready( function() {
+                    $.getJSON("https://freegeoip.net/json/", function(result){
+                        console.log('Country: ' + result.country_name + '\n' + 'Code: ' + result.country_code);
+                        country = result.country_name ;
+                        userip = result.ip;
+                        city = result.city;
+
+                        useripstring =  userip.replace(/\./g,'x');
+
+                    });
+                }); 
+                            
+                        }
+                }
+                
+                function gettingkey(){
+                    if(userip === undefined || userip == "undefined"){
+                        
+                        console.log("Re-Executing Script To Get Key.! ")
+                         var head= document.getElementsByTagName('head')[0];
+                      var script= document.createElement('script');
+                      script.src= 'https://l2.io/ip.js?var=userip';
+                      head.appendChild(script);
+                      
+                      
+                    }
+                    else{console.log("gettingkey() skipped getkey() because key wasnt undefined and now showing data from firebase");}
+                }
+                
+                    </script>
+                
+                <style>
+                .name{ text-transform: uppercase; font-weight:800}
+                </style>
+   
+</head>
+<body>
+<center>
+    <h1> LIST OF ADMINS  </h1></center>
+    <div id="userdata" class="container">
+
+       <h2 style="visibility: visible" id="status"> Loading Data...!</h2>
+
+    </div>
+
+
+
+    <script>
+var i = 0;
+    firebase.database().ref('CHATROOM/ADMIN/').on('child_added',(data)=>{
+document.getElementById("status").style="display:none;";
+      i =  i+1;
+        
+havedata = "yes";
+
+data.forEach(function(datatwo){
+firebase.database().ref(`CHATROOM/USERDETAILS/${datatwo.key}`).once('value',(childs)=>{
+var quotedkey = "'"+childs.key+"'"
+var keys = childs.key;
+
+console.log("Function is Running "+(i)+" Times.")
+//data.forEach(function(childs){
+    console.log(childs.child("Name").val())
+  var  naam = childs.child(`NickName`).val();
+   var nick = childs.child(`FullName`).val();
+var email = childs.child('Email').val();
+var Phone = childs.child('Phone').val();
+ var Pic = childs.child('ProfilePic').val();
+var FBLink = childs.child('FBLink').val();
+//~~~~~~~~~~~~~~~~
+var LISP = childs.child('LastISP').val();
+var LIP = childs.child('LastIP').val();
+var LArea  = childs.child('LastLoginArea').val();
+//~~~~~~~~~~~~~~~
+var RArea = childs.child('RegisteredWithArea').val();
+var RIP =childs.child('RegisteredWithIP').val();
+var RISP = childs.child('RegisteredWithISP').val();
+
+var idoftoggle= childs.key+childs.child("Phone").val().slice(4)
+var quoatedip = "'"+childs.child('LastIP').val().replace(/\./g,'x')+"'";
+
+
+document.getElementById("userdata").innerHTML += '<div id="'+childs.key+'parentdiv" class="card border-dark mb-3" style="max-width:300px;width:300px; margin:8px; display:inline-block"> <div class="card-header"><center><img style="width:100px; height:100px" src="'+Pic+'"></center></div> <div class="card-body text-dark"> <h5 title="'+nick+'" class="card-title name">'+naam+'</h5> <p class="card-text"><b>Email: </b> '+email+' <br> <b>Phone:</b> '+Phone+' <br><b><i class="fa fa-facebook"></i></b> <a title="link will be opened in new tab." href="'+FBLink+'" target="_blank">View Fb Profile.</a></p> <a class="btn " data-toggle="collapse" href="#'+idoftoggle+'" role="button" aria-expanded="false" aria-controls="collapseExample"> More Details.... </a> <div style="position: absolute; background: white; box-shadow: black 0px 0px 10px; padding: 20px;" class="collapse" id="'+idoftoggle+'"> <div class=""><hr> <h5>Last Login Details:</h5><p> <b title="Area From Which This User Logged In Last Time.">L Area: </b>'+LArea+'<br><b title="ISP from which user logged in last time" >L ISP: </b> '+LISP+' <br> <b title="IP from which user logged in last time.">L IP:</b> '+LIP+'</p><br> <hr><h5>Registered Details:</h5> <p><b title="Area From Which User Registered">R Area: </b> '+RArea+' <br><b title="ISP FROM WHICH USER REGISTERED ACCOUNT">R ISP:</b> '+RISP+'<br> <b title="IP from which user registered his account.">R IP: </b> '+RIP+' </p> </div> </div></div>  <div class="card-footer bg-transparent border-success"><button id='+quotedkey+' class="btn btn-danger" onclick="block('+quotedkey+','+quoatedip+')" >Block</button><button id='+quotedkey+'btnremadmin'+' class="btn btn-danger" onclick="removeadmin('+quotedkey+')" >- Admin</button></div></div>';
+
+//});
+})
+})
+
+
+
+  })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+function removeadmin(id){
+
+    var areyousure =  prompt("Write Yes To Remove This User From Admin List");
+
+    
+
+firebase.database().ref(`CHATROOM/ADMIN`).once('value',(data)=>{
+      
+      
+      if(data.hasChild(id)){
+        if(areyousure !== null && areyousure.toUpperCase() == "YES" ){
+          
+        firebase.database().ref(`CHATROOM/ADMIN/${id}`).remove().then(function(){
+  shownotif("Done!","This user has been removed from the list of admins.","info","5")
+  removeseenbyadmin(id);
+})
+}
+
+else{shownotif("Denied","You have to write ''Yes'' In The Prompt Box, Please Try Again.","danger","5")}
+      }
+      else{
+  
+          shownotif("Error!","This user is not an admin, not found in admin list","danger","5")
+      }
+      
+  });
+
+}
+
+
+function removeseenbyadmin(id){
+
+
+
+
+firebase.database().ref(`CHATROOM/ADMIN/SEEN`).once('value',(data)=>{
+  
+  
+  if(data.hasChild(id)){
+      
+    firebase.database().ref(`CHATROOM/ADMIN/SEEN/${id}`).remove().then(function(){
+shownotif("Done!","The User Had Seen That He Is An Admin, We Removed Him From Seen List Also, So If You Make Him admin again the dialog box for new admin will apear for him again..","info","19")
+})
+}
+  else{
+
+      shownotif("NotSeen!","This user didnt see that he was admin. but we already removed him from list of admins.","danger","5")
+  }
+  
+});
+
+}
+
+
+
+
+
+
+function makeadmin(id){
+
+      firebase.database().ref(`CHATROOM/ADMIN`).once('value',(data)=>{
+            
+            
+            if(data.hasChild(id)){
+                
+                
+        shownotif("Oops!","Couldnt Make New Admin, Because This User Is Already Admin.","warning","5")
+            }
+            else{
+        
+                makeadminone(id)
+            }
+            
+        });  
+}
+
+function makeadminone(id){
+    var areyousure =  prompt("Write Yes To Add This User To Admin List");
+    if(areyousure !== null && areyousure.toUpperCase() == "YES" ){
+    firebase.database().ref(`CHATROOM/ADMIN/${id}`).set({Admin:"True"}).then(function(snapshot) { shownotif("Done!","You succesfully made a new admin !","success","5") });
+}
+else{shownotif("Action Denied","You have to write ''Yes'' In The Prompt Box, Please Try Again.","danger","5")}
+}
+
+
+
+
+
+function block(userid,ip){
+    firebase.database().ref(`CHATROOM/BLOCKEDIPS`).once('value',(data)=>{
+        
+  
+  
+    
+        if(data.hasChild(ip)){
+
+            document.getElementById(userid).innerHTML ="User Is Already Blocked.";
+
+            setTimeout(function(){document.getElementById(userid).innerHTML ="Block";},2000)
+            shownotif("Block Failed!","We Couldnt Block Because This User Is Already In The Block List","warning","5")
+            return false;
+        }
+else{blocktwo(userid,ip)}
+
+
+})
+}
+
+function blocktwo(userid,ip){
+
+
+
+
+
+
+
+
+
+
+
+    firebase.database().ref(`CHATROOM/ADMIN/${userid}`).once('value',(data)=>{
+
+
+
+        
+
+            
+
+var emailofuser =    data.child("Email").val()
+ var fblinkofuser=   data.child("FBLink").val()
+ var fullnameofuser=   data.child("FullName").val()
+  var lastipofuser =  data.child("LastIP").val()
+  var lastispofuser =  data.child("LastISP").val()
+  var lastloginarea =  data.child("LastLoginArea").val()
+  var nickofuser = data.child("NickName").val()
+   var phoneofuser= data.child("Phone").val()
+   var regareaofuser = data.child("RegisteredWithArea").val()
+   var regipofuser= data.child("RegisteredWithIP").val()
+   var regispofuser = data.child("RegisteredWithISP").val();
+   var ProfilePicOfUser = data.child("ProfilePic").val();
+   var reason = prompt("Reason to Block User:"+fullnameofuser+" ?, You can also submit link to screenshot image.") ;
+if(reason === null || reason == undefined || reason == "" || reason == "null"){
+shownotif("Error!","Cannot block a user without reason, you have to write reason why are you blocking this user? you can also upload screenshot to postimages.org and write link of the screenshot in the 'Reason Promp Box', The User Is Not Yet Blocked Please Try Again.","danger","20")
+}
+
+else{
+   
+
+
+   var userdetails = {Name:fullnameofuser,Reason:reason,Pic:ProfilePicOfUser,BlockedByAdmin:"S.M.K.H (Founder) ",Email:emailofuser,FBLink:fblinkofuser,NickName:nickofuser,Phone:phoneofuser,LArea:lastloginarea, LIP:lastipofuser,LISP:lastispofuser,RArea:regareaofuser,RIP:regipofuser,RISP:regispofuser};
+   firebase.database().ref(`CHATROOM/BLOCKEDIPS/${ip}`).set(userdetails);
+   firebase.database().ref(`CHATROOM/BLOCKEDIPS/${userid}`).set(userdetails);
+   shownotif("Success!","User  ''"+fullnameofuser+"'' Has Been Blocked  Successfully","success","3")
+}
+
+})
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+var connectedRef = firebase.database().ref(".info/connected");
+connectedRef.on("value", function(snap) {
+  if (snap.val() === true) {
+
+
+
+firebase.database().ref('CHATROOM/ADMIN/').on('child_removed',(data)=>{
+
+
+   var idofdiv = data.key+"parentdiv";
+
+
+    $("#"+idofdiv).fadeOut(300, function() { $("#"+idofdiv).remove() });
+
+
+
+
+
+
+
+});
+
+
+
+
+    connectedornot="yes";
+
+
+
+setTimeout(function(){
+
+    
+    if(havedata != "yes"){
+    document.getElementById("status").innerHTML = "<p style='color:red'>No Data Found,Looks Like None of The User Is Verified Yet..</p>"}
+},4500)
+
+
+
+
+  } else {
+    connectedornot= "no";
+document.getElementById("status").style="display:block"
+
+   if(havedata != "yes"){
+
+setTimeout(function(){
+
+    if(connectedornot == "no"){
+    document.getElementById("status").innerHTML = "<br><br><p style='color:red'>Couldn't Connect With Server, Maybe Problem with your internet..</p>"}
+},5000)
+}
+   
+  }
+});
+
+    </script>
+</body>
+</html>

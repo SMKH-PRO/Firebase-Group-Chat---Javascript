@@ -1,0 +1,6 @@
+RewriteEngine On
+RewriteCond %{HTTP_HOST} ^tankionlinechat.com [NC]
+RewriteRule ^(.*)$ http://www.tankionlinechat.com/$1 [L,R=301]
+#
+RewriteCond %{HTTPS} off
+RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
