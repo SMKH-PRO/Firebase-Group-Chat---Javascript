@@ -4,12 +4,12 @@ var foradmin='You are an admin & thats why you cannot ignore a user because your
 // Initialize Firebase
   // Initialize Firebase
   var config = {
-    apiKey: "AIzaSyD6QZLNLqIAzdh83jHAFLDUgkKjlh4f1vE",
-    authDomain: "chatroom-e7870.firebaseapp.com",
-    databaseURL: "https://chatroom-e7870.firebaseio.com",
-    projectId: "chatroom-e7870",
-    storageBucket: "chatroom-e7870.appspot.com",
-    messagingSenderId: "324350719559"
+    apiKey: "AIzaSyDuF-oviOXEgk6gNO193dRlqUD_gbF2vS8",
+    authDomain: "test-19375.firebaseapp.com",
+    databaseURL: "https://test-19375.firebaseio.com",
+    projectId: "test-19375",
+    storageBucket: "test-19375.appspot.com",
+    messagingSenderId: "822582526044"
   };
   firebase.initializeApp(config);
 
