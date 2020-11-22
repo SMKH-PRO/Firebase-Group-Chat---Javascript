@@ -194,7 +194,7 @@ shownotif("Alert!","We will send you a 6 digit code on this number, you have to 
       
         
       
-        alertforcode();
+        //alertforcode();
     var code = alertforcode();
       
 
