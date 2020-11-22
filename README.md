@@ -15,4 +15,5 @@ PASSWORD: example.com
 
 ## IN-CASE YOU WANNA TEST PHONE VERIFICATION FEATURE:
 Testing Phone Number: +92 345 8966868	
+<br/>
 Testing Phone Number's Verification code: 123456
