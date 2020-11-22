@@ -304,7 +304,7 @@ setTimeout(function(){  $("#Uploadfiles").modal("hide"); }, 700);
 
     var bigimagefunction= "BigPicture({ el: this, vidSrc: '"+downloadURL+"' })"
    
-      firebase.database().ref(`CHATROOM/MESSAGES`).push({Nickname:thenameofuser,Name: thenameofuser,EMAIL: theemailofuser,UserImage:theprofilepicofuser , UserId: theuseridofuser,Ip: userip,Message:`<video class="uploadedvideo" onclick="${bigimagefunction}" > <source src="/Firebase-Group-Chat--Javascript/${downloadURL}" > Your browser does not support HTML5 video. </video> <img onclick="${bigimagefunction}"  src="/Firebase-Group-Chat--Javascript/play-button.png" class="avatarimg vidplaybtn"><br> <text class="nameofvideo" title="${file.name}"><text class="redcolor"> Video:</text> ${filename}</text>`,Date:fulldate,Time:currentTimeStringforCheckout}).then((result) => {
+      firebase.database().ref(`CHATROOM/MESSAGES`).push({Nickname:thenameofuser,Name: thenameofuser,EMAIL: theemailofuser,UserImage:theprofilepicofuser , UserId: theuseridofuser,Ip: userip,Message:`<video class="uploadedvideo" onclick="${bigimagefunction}" > <source src="${downloadURL}" > Your browser does not support HTML5 video. </video> <img onclick="${bigimagefunction}"  src="play-button.png" class="avatarimg vidplaybtn"><br> <text class="nameofvideo" title="${file.name}"><text class="redcolor"> Video:</text> ${filename}</text>`,Date:fulldate,Time:currentTimeStringforCheckout}).then((result) => {
      firebase.database().ref('/notifications')
     .push({
       user: firebase.auth().currentUser.displayName,
