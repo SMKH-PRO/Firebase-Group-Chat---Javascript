@@ -861,7 +861,7 @@ function signup(){
     
     user.updateProfile({
       displayName:  localStorage.getItem("Name"),
-      photoURL: "/defaultuser.png"
+      photoURL: "https://smkh-pro.github.io/Firebase-Group-Chat--Javascript/defaultuser.png"
     }).then(function() {
       // console.log(user.displayName)
       document.getElementById("nametitle").innerHTML = user.displayName;
