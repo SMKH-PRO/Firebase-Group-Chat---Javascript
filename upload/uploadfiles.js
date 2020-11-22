@@ -441,7 +441,7 @@ uploadboxclosetwo.style="display:none;"
 
 
    
-  if(file.type == "image/png"  || file.type == "image/jpeg"  || file.type == "image/gif"  || file.type == "image/jpg"){
+  if((file.type == "image/png"  || file.type == "image/jpeg"  || file.type == "image/gif"  || file.type == "image/jpg")&&false){
 
 uploadertwo.style ="display:block; transition:all 3000ms ease;";
 
@@ -500,7 +500,10 @@ shownotif("Task Completed!","Your Profile Picture Has Been Changed/Updated Succe
 
 else{
   updateprofilebtnfunction()
- shownotif("Error!","The file you selected is not an image file, Please Select File With Valid Image Format Such As .png, .jpg","danger","6")
+ //shownotif("Error!","The file you selected is not an image file, Please Select File With Valid Image Format Such As .png, .jpg","danger","6")
+
+ shownotif("Error!","Upload file function requires php supported server but github pages does nots support .php so this feature won't be working","danger","6")
+
 }//Else Ends here
   
   
