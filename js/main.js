@@ -198,7 +198,7 @@ shownotif("Alert!","We will send you a 6 digit code on this number, you have to 
     var code = alertforcode();
       
 
-    return confirmationResult.confirm(code);
+    return confirmationResult.confirm(`${code}`); //code must be string.
 
   
     })
