@@ -8,7 +8,11 @@ An admin can create other admins!, if you dont have any admin account you can si
 
 
 
-TESTING ACCOUNT LOGIN DETAILS:
+## TESTING ACCOUNT LOGIN DETAILS:
 
 EMAIL: testaccount@example.com
 PASSWORD: example.com
+
+## IN-CASE YOU WANNA TEST PHONE VERIFICATION FEATURE:
+Testing Phone Number: +92 345 8966868	
+Testing Phone Number's Verification code: 123456
