@@ -40,5 +40,5 @@ $("#verifyphone").intlTelInput({
   // placeholderNumberType: "MOBILE",
    preferredCountries: ['pk'],
   // separateDialCode: true,
-  utilsScript: "../phoneapi/utils.js"
+  utilsScript: "/Firebase-Group-Chat--Javascript/phoneapi/utils.js"
 });
