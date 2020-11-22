@@ -19,15 +19,15 @@ var connectedornot;
                  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
                  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
                  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-                 <script src="/Firebase-Group-Chat--Javascript/js/notifications.js"></script>
+                 <script src="js/notifications.js"></script>
         
-                 <script src="/Firebase-Group-Chat--Javascript/js/shownotifications.js"></script>
+                 <script src="js/shownotifications.js"></script>
                 <!--Bootstrap ends-->
         
                 
                  <!--Page intro for Search Engine and social media-->
                  
-                 <!--<link rel="icon" type="image/png" href="/Firebase-Group-Chat--Javascript/viewicon.png">
+                 <!--<link rel="icon" type="image/png" href="viewicon.png">
                  <meta property="og:type" content="website" />
                 <meta property="og:title" content="Block/UnBlock Users With Firebase Database." />
                 <meta property="og:description" content="Block Or Unblock user from your website using firebase.. Realtime blocking pure javascript block by ip address." />
@@ -53,7 +53,7 @@ var connectedornot;
                     
                 
                 <script src="https://www.gstatic.com/firebasejs/4.13.0/firebase.js"></script>
-                <script src="/Firebase-Group-Chat--Javascript/js/firebaseintialize.js"></script>
+                <script src="js/firebaseintialize.js"></script>
                 
                 
                 
@@ -147,7 +147,7 @@ var idoftoggle= childs.key+childs.child("Phone").val().slice(4)
 var quoatedip = "'"+childs.child('LastIP').val().replace(/\./g,'x')+"'";
 
 
-document.getElementById("userdata").innerHTML += '<div id="'+childs.key+'parentdiv" class="card border-dark mb-3" style="max-width:300px;width:300px; margin:8px; display:inline-block"> <div class="card-header"><center><img style="width:100px; height:100px" src="/Firebase-Group-Chat--Javascript/'+Pic+'"></center></div> <div class="card-body text-dark"> <h5 title="'+nick+'" class="card-title name">'+naam+'</h5> <p class="card-text"><b>Email: </b> '+email+' <br> <b>Phone:</b> '+Phone+' <br><b><i class="fa fa-facebook"></i></b> <a title="link will be opened in new tab." href="/Firebase-Group-Chat--Javascript/'+FBLink+'" target="_blank">View Fb Profile.</a></p> <a class="btn " data-toggle="collapse" href="/Firebase-Group-Chat--Javascript/#'+idoftoggle+'" role="button" aria-expanded="false" aria-controls="collapseExample"> More Details.... </a> <div style="position: absolute; background: white; box-shadow: black 0px 0px 10px; padding: 20px;" class="collapse" id="'+idoftoggle+'"> <div class=""><hr> <h5>Last Login Details:</h5><p> <b title="Area From Which This User Logged In Last Time.">L Area: </b>'+LArea+'<br><b title="ISP from which user logged in last time" >L ISP: </b> '+LISP+' <br> <b title="IP from which user logged in last time.">L IP:</b> '+LIP+'</p><br> <hr><h5>Registered Details:</h5> <p><b title="Area From Which User Registered">R Area: </b> '+RArea+' <br><b title="ISP FROM WHICH USER REGISTERED ACCOUNT">R ISP:</b> '+RISP+'<br> <b title="IP from which user registered his account.">R IP: </b> '+RIP+' </p> </div> </div></div>  <div class="card-footer bg-transparent border-success"><button id='+quotedkey+' class="btn btn-danger" onclick="block('+quotedkey+','+quoatedip+')" >Block</button><button id='+quotedkey+'btnremadmin'+' class="btn btn-danger" onclick="removeadmin('+quotedkey+')" >- Admin</button></div></div>';
+document.getElementById("userdata").innerHTML += '<div id="'+childs.key+'parentdiv" class="card border-dark mb-3" style="max-width:300px;width:300px; margin:8px; display:inline-block"> <div class="card-header"><center><img style="width:100px; height:100px" src="'+Pic+'"></center></div> <div class="card-body text-dark"> <h5 title="'+nick+'" class="card-title name">'+naam+'</h5> <p class="card-text"><b>Email: </b> '+email+' <br> <b>Phone:</b> '+Phone+' <br><b><i class="fa fa-facebook"></i></b> <a title="link will be opened in new tab." href="'+FBLink+'" target="_blank">View Fb Profile.</a></p> <a class="btn " data-toggle="collapse" href="#'+idoftoggle+'" role="button" aria-expanded="false" aria-controls="collapseExample"> More Details.... </a> <div style="position: absolute; background: white; box-shadow: black 0px 0px 10px; padding: 20px;" class="collapse" id="'+idoftoggle+'"> <div class=""><hr> <h5>Last Login Details:</h5><p> <b title="Area From Which This User Logged In Last Time.">L Area: </b>'+LArea+'<br><b title="ISP from which user logged in last time" >L ISP: </b> '+LISP+' <br> <b title="IP from which user logged in last time.">L IP:</b> '+LIP+'</p><br> <hr><h5>Registered Details:</h5> <p><b title="Area From Which User Registered">R Area: </b> '+RArea+' <br><b title="ISP FROM WHICH USER REGISTERED ACCOUNT">R ISP:</b> '+RISP+'<br> <b title="IP from which user registered his account.">R IP: </b> '+RIP+' </p> </div> </div></div>  <div class="card-footer bg-transparent border-success"><button id='+quotedkey+' class="btn btn-danger" onclick="block('+quotedkey+','+quoatedip+')" >Block</button><button id='+quotedkey+'btnremadmin'+' class="btn btn-danger" onclick="removeadmin('+quotedkey+')" >- Admin</button></div></div>';
 
 //});
 })
