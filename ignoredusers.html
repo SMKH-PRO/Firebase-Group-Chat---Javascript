@@ -13,19 +13,19 @@ var connectedornot;
                  
                  <!--Bootsstrap-->
                  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-                 <script src="js/notifications.js"></script>
+                 <script src="/Firebase-Group-Chat--Javascript/js/notifications.js"></script>
         
-                 <link rel='stylesheet prefetch' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css'>                 <script src="js/shownotifications.js"></script>
+                 <link rel='stylesheet prefetch' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css'>                 <script src="/Firebase-Group-Chat--Javascript/js/shownotifications.js"></script>
                  
                  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
                  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
                  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
                 <!--Bootstrap ends-->
-                <link rel="stylesheet" href="css/mdbs.css">        
+                <link rel="stylesheet" href="/Firebase-Group-Chat--Javascript/css/mdbs.css">        
                 
                  <!--Page intro for Search Engine and social media-->
                  
-                 <!--<link rel="icon" type="image/png" href="viewicon.png">
+                 <!--<link rel="icon" type="image/png" href="/Firebase-Group-Chat--Javascript/viewicon.png">
                  <meta property="og:type" content="website" />
                 <meta property="og:title" content="Block/UnBlock Users With Firebase Database." />
                 <meta property="og:description" content="Block Or Unblock user from your website using firebase.. Realtime blocking pure javascript block by ip address." />
@@ -51,7 +51,7 @@ var connectedornot;
                     
                 
                 <script src="https://www.gstatic.com/firebasejs/4.13.0/firebase.js"></script>
-                <script src="js/firebaseintialize.js"></script>
+                <script src="/Firebase-Group-Chat--Javascript/js/firebaseintialize.js"></script>
                 
                 
                 
@@ -117,7 +117,7 @@ var connectedornot;
                     <!-- Nav tabs -->
                     <ul class="nav nav-tabs tabs-2 light-blue darken-3" role="tablist">
                         <li class="nav-item">
-                            <a class="nav-link active" data-toggle="tab" href="#panel7" role="tab"><i class="fa fa-user mr-1"></i> Login</a>
+                            <a class="nav-link active" data-toggle="tab" href="/Firebase-Group-Chat--Javascript/#panel7" role="tab"><i class="fa fa-user mr-1"></i> Login</a>
                         </li>
                         
                     </ul>
@@ -250,7 +250,7 @@ firebase.database().ref(`CHATROOM/USERDETAILS/${ignoreduserid.key}`).once('value
 
 
 
-document.getElementById("userdata").innerHTML += '<div id="'+ignoreduserid.key+'parentdiv" class="card border-dark mb-3" style="max-width:300px;width:300px; margin:8px; display:inline-block"> <div class="card-header"><center><img style="width:100px; height:100px" src="'+Pic+'"></center></div> <div class="card-body text-dark"> <h5 title="'+nick+'" class="card-title name">'+naam+'</h5> <p class="card-text">This user was ignored by you and you will not be able to see messages from this user, however this user will be able to send messages to chatroom and he is also able to see your messages. </p>  <div class="card-footer bg-transparent border-success"><button id='+quotedkey+'btn'+' class="btn btn-danger" onclick="unignoreuser('+quotedkey+')" >Unblock</button></div></div>';
+document.getElementById("userdata").innerHTML += '<div id="'+ignoreduserid.key+'parentdiv" class="card border-dark mb-3" style="max-width:300px;width:300px; margin:8px; display:inline-block"> <div class="card-header"><center><img style="width:100px; height:100px" src="/Firebase-Group-Chat--Javascript/'+Pic+'"></center></div> <div class="card-body text-dark"> <h5 title="'+nick+'" class="card-title name">'+naam+'</h5> <p class="card-text">This user was ignored by you and you will not be able to see messages from this user, however this user will be able to send messages to chatroom and he is also able to see your messages. </p>  <div class="card-footer bg-transparent border-success"><button id='+quotedkey+'btn'+' class="btn btn-danger" onclick="unignoreuser('+quotedkey+')" >Unblock</button></div></div>';
 
 //});
 
