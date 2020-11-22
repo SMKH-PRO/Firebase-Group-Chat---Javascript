@@ -9,5 +9,6 @@ An admin can create other admins!, if you dont have any admin account you can si
 
 
 TESTING ACCOUNT LOGIN DETAILS:
-testaccount@example.com
-example.com
+
+EMAIL: testaccount@example.com
+PASSWORD: example.com
