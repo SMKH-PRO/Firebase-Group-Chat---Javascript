@@ -29,7 +29,7 @@ if(isAdmin  == "YES"){
         var ProfilePicOfUser = data.child("ProfilePic").val();
 
         $("#userinfomodal").modal("show");
-        document.getElementById("userdetailsFBLink").innerHTML = '<a href="/Firebase-Group-Chat--Javascript/'+fblinkofuser+'" target="_blank"> View FB Profile </a>'
+        document.getElementById("userdetailsFBLink").innerHTML = '<a href="'+fblinkofuser+'" target="_blank"> View FB Profile </a>'
         document.getElementById("userdetailsEmail").innerHTML=emailofuser;
         document.getElementById("userdetailsPhone").innerHTML = phoneofuser;
         document.getElementById("userdetailsimg").src= ProfilePicOfUser;

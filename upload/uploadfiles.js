@@ -288,7 +288,7 @@ setTimeout(function(){  $("#Uploadfiles").modal("hide"); }, 700);
     }
 
     else{
-    firebase.database().ref(`CHATROOM/MESSAGES`).push({Nickname:thenameofuser,Name: thenameofuser,EMAIL: theemailofuser,UserImage:theprofilepicofuser , UserId: theuseridofuser,Ip: userip,Message:"<a href="/Firebase-Group-Chat--Javascript/+downloadURL+" target='_blank' download><figure><img class='sentfile' src='"+filedisplay+"'> <figcaption title='"+file.name+"' >"+filename+"</figcaption> </figure></a>",Date:fulldate,Time:currentTimeStringforCheckout}).then((result) => {
+    firebase.database().ref(`CHATROOM/MESSAGES`).push({Nickname:thenameofuser,Name: thenameofuser,EMAIL: theemailofuser,UserImage:theprofilepicofuser , UserId: theuseridofuser,Ip: userip,Message:"<a href="+downloadURL+" target='_blank' download><figure><img class='sentfile' src='"+filedisplay+"'> <figcaption title='"+file.name+"' >"+filename+"</figcaption> </figure></a>",Date:fulldate,Time:currentTimeStringforCheckout}).then((result) => {
   firebase.database().ref('/notifications')
     .push({
       user: firebase.auth().currentUser.displayName,

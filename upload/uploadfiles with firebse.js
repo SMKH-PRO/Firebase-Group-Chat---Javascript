@@ -293,7 +293,7 @@ percentagetext.value = "Upload Completed.";
 setTimeout(function(){  $("#Uploadfiles").modal("hide"); }, 700);
 
 
-    /*firebase.database().ref(`MFS_files/${useripstring}`).push('<a class="imgdwnld"  href="/Firebase-Group-Chat--Javascript/'+downloadURL+'" download><div class="yst-card-4 test uploadedimage" > <img src='+filedisplay+'  class="uploadedfileimage" alt="Default File Icon." style="width:100%;opacity:0.85"> <div class="yst-container"> <center>'+filename+' </center></b> </div> </div></a></div>');*/
+    /*firebase.database().ref(`MFS_files/${useripstring}`).push('<a class="imgdwnld"  href="'+downloadURL+'" download><div class="yst-card-4 test uploadedimage" > <img src='+filedisplay+'  class="uploadedfileimage" alt="Default File Icon." style="width:100%;opacity:0.85"> <div class="yst-container"> <center>'+filename+' </center></b> </div> </div></a></div>');*/
 
 
     
@@ -338,7 +338,7 @@ setTimeout(function(){  $("#Uploadfiles").modal("hide"); }, 700);
     }
 
     else{
-    firebase.database().ref(`CHATROOM/MESSAGES`).push({Nickname:thenameofuser,Name: thenameofuser,EMAIL: theemailofuser,UserImage:theprofilepicofuser , UserId: theuseridofuser,Ip: userip,Message:"<a href="/Firebase-Group-Chat--Javascript/+downloadURL+" target='_blank' download><figure><img class='sentfile' src='"+filedisplay+"'> <figcaption title='"+file.name+"' >"+filename+"</figcaption> </figure></a>",Date:fulldate,Time:currentTimeStringforCheckout}).then((result) => {
+    firebase.database().ref(`CHATROOM/MESSAGES`).push({Nickname:thenameofuser,Name: thenameofuser,EMAIL: theemailofuser,UserImage:theprofilepicofuser , UserId: theuseridofuser,Ip: userip,Message:"<a href="+downloadURL+" target='_blank' download><figure><img class='sentfile' src='"+filedisplay+"'> <figcaption title='"+file.name+"' >"+filename+"</figcaption> </figure></a>",Date:fulldate,Time:currentTimeStringforCheckout}).then((result) => {
   firebase.database().ref('/notifications')
     .push({
       user: firebase.auth().currentUser.displayName,
